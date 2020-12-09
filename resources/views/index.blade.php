@@ -185,7 +185,8 @@
 				<a href="jobs-list-layout-1.html" class="photo-box small" data-background-image="{{asset('template/images/job-category-01.jpg')}}">
 					<div class="photo-box-content">
 						<h3>{{$item->name}}</h3>
-						  <span>{{$calcul}}</span>
+						<!--<span>{{$calcul}}</span>--->
+						<span>{{ App\Models\OffreEmploi::where('categories_id',$item->id)->count() }}</span>
 					</div>
 				</a>
 			</div>
