@@ -25,6 +25,8 @@ Route::get('/test',[TestController::class, 'test']);
 
 Route::get('/',[TestController::class, 'index']);
 
+Route::get('/offre-categorie/{id}',[TestController::class, 'offreCategorie']);
+
 Route::post('/search',[TestController::class, 'search']);
 
 Route::get('/consulter-offre/{id}',[TestController::class, 'consulterOffre']);
@@ -127,6 +129,10 @@ Route::group(['middleware' => 'user'], function() {
 
  Route::post('/confirm-offre/{id}',[UtilisateurController::class, 'confirmOffre']);
 
+ Route::get('/add-project',[UtilisateurController::class,'addProject']);
+
+ Route::post('/store-project',[UtilisateurController::class,'storeProject']); 
+
  Route::get('/list-project',[UtilisateurController::class,'listProject']);
 
  Route::get('/parametres-user',[UtilisateurController::class,'parametresUser']);
@@ -136,6 +142,8 @@ Route::group(['middleware' => 'user'], function() {
  Route::get('/deleteuser/{id}',[UtilisateurController::class,'deleteUser']);
 
  Route::get('/logout-user',[UtilisateurController::class, 'logoutUser']);
+
+ Route::get('/offre-instagram/{id}',[UtilisateurController::class, 'offreInstagram']);
 
 });
 

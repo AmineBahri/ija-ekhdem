@@ -11,6 +11,7 @@ use App\Models\OffreEmploi;
 use App\Models\Category;
 use App\Models\Project;
 use App\Models\OffreEmploiUtilisateur;
+use App\Models\ProductInstagram;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\ResetPassword;
 use Session;
@@ -143,6 +144,33 @@ class UtilisateurController extends Controller
         return $offers ;
     }
 
+    public function addProject()
+    {
+      return view('add-project');
+    }
+
+    public function storeProject(Request $request)
+    {
+      $request->validate(
+            [
+              'prix_projet' => 'required|max:255',
+              'date_depot' => 'required|date',
+              'file' => 'required|mimes:zip,rar|max:2048'
+            ]);
+      $file = $request->file('file');
+      $uploadPath = "projets";
+      $originalFile = $file->getClientOriginalName();
+      $file->move($uploadPath, $originalFile);
+      
+      $project = new Project();
+      $project->nom_projet = $originalFile;
+      $project->prix_projet = $request->prix_projet;
+      $project->date_depot = $request->date_depot;
+      $project->utilisateur_id = Session::get('utilisateur')['id'];
+      $project->save();
+      return redirect('list-project');
+    }
+
     public function listProject()
     {
       $utilisateur = Session::get('utilisateur')['id'];
@@ -250,6 +278,12 @@ class UtilisateurController extends Controller
       {
          return redirect()->back();
       }
+    }
+
+    public function offreInstagram($id)
+    {
+        $produits = ProductInstagram::where('categories_id',$id)->get();
+        return view('produits-instagram',['produits' => $produits]);
     }
 
     public function logoutUser()

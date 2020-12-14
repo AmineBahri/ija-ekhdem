@@ -112,14 +112,15 @@
 					<!-- Search Field -->
 					<div class="intro-search-field">
 						<label for ="intro-keywords" class="field-title ripple-effect">Ce que vous voulez cherchez?</label>
-						<input id="intro-keywords" type="text" placeholder="Créer un site web" name="offer_title">
+						<input id="intro-keywords" type="text" placeholder="Rechercher" name="offer_title">
+						<i class="icon-material-outline-search"></i>
 					</div>
 
 					<!-- Search Field -->
 					<div class="intro-search-field with-autocomplete">
 						<label for="autocomplete-input" class="field-title ripple-effect">Où?</label>
 						<div class="input-with-icon">
-							<input id="autocomplete-input" type="text" placeholder="Travail en ligne" name="offer_title">
+							<input id="autocomplete-input" type="text" placeholder="Emplacement" name="emplacement">
 							<i class="icon-material-outline-location-on"></i>
 						</div>
 					</div>
@@ -182,13 +183,22 @@
             @foreach($categories as $item)
 			<div class="col-xl-3 col-md-6">
 				<!-- Photo Box -->
-				<a href="jobs-list-layout-1.html" class="photo-box small" data-background-image="{{asset('template/images/job-category-01.jpg')}}">
+				@if($item->name == "Instagram")
+				 <a href="{{url('offre-instagram',$item->id)}}" class="photo-box small" data-background-image="{{asset('template/images/instagram.jpg')}}">
 					<div class="photo-box-content">
 						<h3>{{$item->name}}</h3>
-						<!--<span>{{$calcul}}</span>--->
+						<span>{{ App\Models\ProductInstagram::where('categories_id',$item->id)->count() }}</span>
+					</div>
+				</a>
+				@else
+				<a href="{{url('offre-categorie',$item->id)}}" class="photo-box small" data-background-image="{{asset('template/images/job-category-01.jpg')}}">
+					<div class="photo-box-content">
+						<h3>{{$item->name}}</h3>
+						<!--<span>{{$calcul}}</span>-->
 						<span>{{ App\Models\OffreEmploi::where('categories_id',$item->id)->count() }}</span>
 					</div>
 				</a>
+				@endif
 			</div>
 			@endforeach
 		</div>
@@ -249,7 +259,14 @@
 					
 				</div>
 				<!-- Jobs Container / End -->
+            <span style="text-align: right;">{{$offreDetails->links()}}</span>
 
+            <style type="text/css">
+	         .w-5
+	         {
+		        display: none;
+	         }
+            </style>
 			</div>
 		</div>
 	</div>

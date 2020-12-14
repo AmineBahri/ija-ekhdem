@@ -10,4 +10,9 @@ class Category extends Model
     use HasFactory;
 
     protected $table = "categories";
+
+    public function offres()
+    {
+      return $this->hasMany('App\Models\OffreEmploi');
+    }
 }

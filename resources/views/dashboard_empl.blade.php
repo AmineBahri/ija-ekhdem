@@ -221,7 +221,7 @@
                              </ul>
                           </div>
                         @endif
-                         <form action="{{url('storeoffre')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{url('storeoffre')}}" method="post" enctype="multipart/form-data">
                          	@csrf
 						<div class="content with-padding padding-bottom-10">
 							<div class="row">
