@@ -40,30 +40,47 @@ class TestController extends Controller
         $category_id = $request->input('category_id') ; 
         $offerWord = $request->input('offer_title') ;
         $emplacement = $request->input('emplacement') ; 
+        $categories = Category::all();;
         if(($category_id == null || $category_id == '') && ($offerWord == null || $offerWord == '') && ($emplacement == null || $emplacement == '')) {
             $offers = OffreEmploi::all() ; 
+            //return view('search-offre',['offers' => $offers, 'categories' => $categories]);
         } elseif(($category_id == null || $category_id == '') && ($emplacement == null || $emplacement == '') && $offerWord != null && $offerWord != '') {
-            $offers = OffreEmploi::where('titre_offre','like','%'.$offerWord.'%')->get() ;    
+            $offers = OffreEmploi::where('titre_offre','like','%'.$offerWord.'%')->get() ;
+            //return view('search-offre',['offers' => $offers, 'categories' => $categories]);    
         } elseif(($offerWord == null || $offerWord == '') && ($emplacement == null || $emplacement == '') && $category_id != '' && $category_id != null) {
             $offers = OffreEmploi::where('categories_id','=',$category_id)->get() ; 
+            //return view('search-offre',['offers' => $offers, 'categories' => $categories]);
         } elseif(($offerWord == null || $offerWord == '') && ($category_id == '' && $category_id == null) && $emplacement != '' && $emplacement != null) {
             $offers = OffreEmploi::where('emplacement','like','%'.$emplacement.'%')->get() ; 
+            //return view('search-offre',['offers' => $offers, 'categories' => $categories]);
         } elseif(($category_id == '' && $category_id == null) && ($offerWord != '' && $offerWord != null && $emplacement != '' && $emplacement != null)) {
-            $offers = OffreEmploi::where([['titre_offre','like','%'.$offerWord.'%'],['emplacement','like','%'.$emplacement.'%']])->get() ; 
+            $offers = OffreEmploi::where([['titre_offre','like','%'.$offerWord.'%'],['emplacement','like','%'.$emplacement.'%']])->get() ;
+            //return view('search-offre',['offers' => $offers, 'categories' => $categories]); 
         } elseif(($emplacement == '' && $emplacement == null) && ($offerWord != '' && $offerWord != null && $category_id != '' && $category_id != null)) {
             $offers = OffreEmploi::where([['titre_offre','like','%'.$offerWord.'%'],['categories_id','=',$category_id]])->get() ; 
+            //return view('search-offre',['offers' => $offers, 'categories' => $categories]);
         } elseif(($offerWord == '' && $offerWord == null) && ($emplacement != '' && $emplacement != null && $category_id != '' && $category_id != null)) {
             $offers = OffreEmploi::where([['emplacement','like','%'.$emplacement.'%'],['categories_id','=',$category_id]])->get() ; 
+            //return view('search-offre',['offers' => $offers, 'categories' => $categories]);
         } elseif($category_id != '' && $category_id != null && $offerWord != '' && $offerWord != null && $emplacement != '' && $emplacement != null) {
             $offers = OffreEmploi::where([['categories_id','=',$category_id],['titre_offre','like','%'.$offerWord.'%'],['emplacement','like','%'.$emplacement.'%']])->get() ; 
-        }
-        return $offers ; 
+            //return view('search-offre',['offers' => $offers, 'categories' => $categories]);
+        } 
+        /*elseif(($category_id == '11') && ($offerWord == null || $offerWord == '') && ($emplacement == null || $emplacement == '')) {
+            $result = ProductInstagram::where('categories_id','=',$category_id)->get() ; 
+            return $result;
+            //return view('instagram-search',['result' => $result]);
+        }*/
+        //return $offers;
+        return view('search-offre',['offers' => $offers, 'categories' => $categories]);
     }
 
     public function offreCategorie($id)
     {
         $offres = OffreEmploi::where('categories_id',$id)->get();
-        return $offres;
+        //return $offres;
+        $categories = Category::all();
+        return view('offre-categorie',['offres' => $offres, 'categories' => $categories]);
     }
 
     public function consulterOffre($id)

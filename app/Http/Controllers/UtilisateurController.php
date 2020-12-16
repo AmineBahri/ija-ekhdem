@@ -125,23 +125,27 @@ class UtilisateurController extends Controller
     {
       $category_id = $request->input('category_id') ; 
       $offerWord = $request->input('offer_title') ; 
-      if(($category_id == null || $category_id == '') && ($offerWord == null || $offerWord == '')) 
-        {
-          $offers = OffreEmploi::all() ; 
-        } 
-        elseif(($category_id == null || $category_id == '') && $offerWord != null && $offerWord != '') 
-        {
-          $offers = OffreEmploi::where('titre_offre','like','%'.$offerWord.'%')->get() ;    
-        } 
-        elseif(($offerWord == null || $offerWord == '') && $category_id != '' && $category_id != null) 
-        {
-          $offers = OffreEmploi::where('categories_id','=',$category_id)->get() ; 
-        } 
-        elseif($category_id != '' && $category_id != null && $offerWord != '' && $offerWord != null) 
-        {
-          $offers = OffreEmploi::where([['categories_id','=',$category_id],['titre_offre','like','%'.$offerWord.'%']])->get() ; 
+      $emplacement = $request->input('emplacement') ;
+      if(($category_id == null || $category_id == '') && ($offerWord == null || $offerWord == '') && ($emplacement == null || $emplacement == '')) {
+            $offers = OffreEmploi::all() ; 
+        } elseif(($category_id == null || $category_id == '') && ($emplacement == null || $emplacement == '') && $offerWord != null && $offerWord != '') {
+            $offers = OffreEmploi::where('titre_offre','like','%'.$offerWord.'%')->get() ;    
+        } elseif(($offerWord == null || $offerWord == '') && ($emplacement == null || $emplacement == '') && $category_id != '' && $category_id != null) {
+            $offers = OffreEmploi::where('categories_id','=',$category_id)->get() ; 
+        } elseif(($offerWord == null || $offerWord == '') && ($category_id == '' && $category_id == null) && $emplacement != '' && $emplacement != null) {
+            $offers = OffreEmploi::where('emplacement','like','%'.$emplacement.'%')->get() ; 
+        } elseif(($category_id == '' && $category_id == null) && ($offerWord != '' && $offerWord != null && $emplacement != '' && $emplacement != null)) {
+            $offers = OffreEmploi::where([['titre_offre','like','%'.$offerWord.'%'],['emplacement','like','%'.$emplacement.'%']])->get() ; 
+        } elseif(($emplacement == '' && $emplacement == null) && ($offerWord != '' && $offerWord != null && $category_id != '' && $category_id != null)) {
+            $offers = OffreEmploi::where([['titre_offre','like','%'.$offerWord.'%'],['categories_id','=',$category_id]])->get() ; 
+        } elseif(($offerWord == '' && $offerWord == null) && ($emplacement != '' && $emplacement != null && $category_id != '' && $category_id != null)) {
+            $offers = OffreEmploi::where([['emplacement','like','%'.$emplacement.'%'],['categories_id','=',$category_id]])->get() ; 
+        } elseif($category_id != '' && $category_id != null && $offerWord != '' && $offerWord != null && $emplacement != '' && $emplacement != null) {
+            $offers = OffreEmploi::where([['categories_id','=',$category_id],['titre_offre','like','%'.$offerWord.'%'],['emplacement','like','%'.$emplacement.'%']])->get() ; 
         }
-        return $offers ;
+        //return $offers ; 
+        $categories = Category::all();
+        return view('search-result',['offers' => $offers, 'categories' => $categories]);
     }
 
     public function addProject()
@@ -155,7 +159,7 @@ class UtilisateurController extends Controller
             [
               'prix_projet' => 'required|max:255',
               'date_depot' => 'required|date',
-              'file' => 'required|mimes:zip,rar|max:2048'
+              'file' => 'required|mimes:zip,rar'
             ]);
       $file = $request->file('file');
       $uploadPath = "projets";

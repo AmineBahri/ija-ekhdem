@@ -42,6 +42,9 @@
 						<li>
 							<input type="text" placeholder="Rechercher un offre" name="offer_title">
 						</li>
+						<li>
+							<input type="text" placeholder="emplacement" name="emplacement">
+						</li>
 						<!-- Search Field -->
 					    <li>
 						    <select class="intro-search-field" name="category_id" title="Tous les Categories">

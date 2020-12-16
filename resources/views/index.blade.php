@@ -190,6 +190,54 @@
 						<span>{{ App\Models\ProductInstagram::where('categories_id',$item->id)->count() }}</span>
 					</div>
 				</a>
+				@elseif($item->name == "Comptabilité et finance")
+				 <a href="{{url('offre-categorie',$item->id)}}" class="photo-box small" data-background-image="{{asset('template/images/comptabilite.jpg')}}">
+					<div class="photo-box-content">
+						<h3>{{$item->name}}</h3>
+						<!--<span>{{$calcul}}</span>-->
+						<span>{{ App\Models\OffreEmploi::where('categories_id',$item->id)->count() }}</span>
+					</div>
+				 </a>
+				@elseif($item->name == "Bureau et saisie de données")
+				 <a href="{{url('offre-categorie',$item->id)}}" class="photo-box small" data-background-image="{{asset('template/images/job-category-07.jpg')}}">
+					<div class="photo-box-content">
+						<h3>{{$item->name}}</h3>
+						<!--<span>{{$calcul}}</span>-->
+						<span>{{ App\Models\OffreEmploi::where('categories_id',$item->id)->count() }}</span>
+					</div>
+				 </a>
+				@elseif($item->name == "Conseil")
+				 <a href="{{url('offre-categorie',$item->id)}}" class="photo-box small" data-background-image="{{asset('template/images/conseil.png')}}">
+					<div class="photo-box-content">
+						<h3>{{$item->name}}</h3>
+						<!--<span>{{$calcul}}</span>-->
+						<span>{{ App\Models\OffreEmploi::where('categories_id',$item->id)->count() }}</span>
+					</div>
+				 </a>
+				@elseif($item->name == "Ressources humaines")
+				 <a href="{{url('offre-categorie',$item->id)}}" class="photo-box small" data-background-image="{{asset('template/images/ressources.jpg')}}">
+					<div class="photo-box-content">
+						<h3>{{$item->name}}</h3>
+						<!--<span>{{$calcul}}</span>-->
+						<span>{{ App\Models\OffreEmploi::where('categories_id',$item->id)->count() }}</span>
+					</div>
+				 </a>
+				@elseif($item->name == "Informatique et ordinateurs")
+				 <a href="{{url('offre-categorie',$item->id)}}" class="photo-box small" data-background-image="{{asset('template/images/job-category-01.jpg')}}">
+					<div class="photo-box-content">
+						<h3>{{$item->name}}</h3>
+						<!--<span>{{$calcul}}</span>-->
+						<span>{{ App\Models\OffreEmploi::where('categories_id',$item->id)->count() }}</span>
+					</div>
+				 </a>
+				@elseif($item->name == "La gestion")
+				 <a href="{{url('offre-categorie',$item->id)}}" class="photo-box small" data-background-image="{{asset('template/images/gestion.jpg')}}">
+					<div class="photo-box-content">
+						<h3>{{$item->name}}</h3>
+						<!--<span>{{$calcul}}</span>-->
+						<span>{{ App\Models\OffreEmploi::where('categories_id',$item->id)->count() }}</span>
+					</div>
+				 </a>
 				@else
 				<a href="{{url('offre-categorie',$item->id)}}" class="photo-box small" data-background-image="{{asset('template/images/job-category-01.jpg')}}">
 					<div class="photo-box-content">
@@ -259,7 +307,7 @@
 					
 				</div>
 				<!-- Jobs Container / End -->
-            <span style="text-align: right;">{{$offreDetails->links()}}</span>
+            <span style="text-align: center;">{{$offreDetails->links()}}</span>
 
             <style type="text/css">
 	         .w-5
