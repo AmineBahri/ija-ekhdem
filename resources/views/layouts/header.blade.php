@@ -1,8 +1,8 @@
-<!-- Header -->
-    <div id="header">
+<div id="header">
         <div class="container">
             
-           
+            <!-- Left Side Content -->
+            <div class="left-side">
                 
                 <!-- Logo -->
                 <div id="logo">
@@ -10,13 +10,16 @@
                 </div>
 
                 <!-- Main Navigation -->
-                <nav id="navigation"style="height:60px;" class="center">
+                <nav id="navigation">
                     <ul id="responsive">
                     <!--<li><a href="index.php"><img src="images/logo.png" width="200px"height="40px"></a></li>-->
                         <li><a href="{{url('/')}}" class="current">Acceuil</a></li>
                         @if(Session::get('utilisateur'))
                         <li><a href="{{url('/dashboard-user')}}">{{Session::get('utilisateur')['email']}}</a></li>
                         <li><a href="{{url('/logout-user')}}">Déconnexion</a></li>
+                        @elseif(Session::get('personne'))
+                        <li><a href="{{url('/dashboard')}}">{{Session::get('personne')['email']}}</a></li>
+                        <li><a href="{{url('/logout')}}">Déconnexion</a></li>
                         @else
                         <li><a href="{{url('/login')}}">Authentification </a></li>
                         <li><a href="{{url('/register')}}"> Inscription</a></li>
@@ -33,7 +36,7 @@
             </div>
             <!-- Right Side Content / End -->
 
-       
+        </div>
     </div>
     <!-- Header / End -->
 

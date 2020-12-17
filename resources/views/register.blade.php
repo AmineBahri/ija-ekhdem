@@ -41,7 +41,7 @@
 					<ul id="responsive">
 					<!--<li><a href="index.php"><img src="images/logo.png" width="200px"height="40px"></a></li>-->
 						<li><a href="{{url('/')}}" class="current">Acceuil</a></li>
-						<li><a href="{{url('/auth')}}">Authentification </a></li>
+						<li><a href="{{url('/login')}}">Authentification </a></li>
      					<li><a href="{{url('/register')}}"> Inscription</a></li>
 						<li><a href="{{url('/contact')}}">Contact</a></li>
 					</ul>
