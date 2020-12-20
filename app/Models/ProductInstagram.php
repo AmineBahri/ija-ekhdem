@@ -15,4 +15,9 @@ class ProductInstagram extends Model
     {
     	return $this->belongsTo('App\Models\Category','categories_id');
     }
+
+    public function utilisateurs()
+    {
+    	return $this->belongsToMany('App\Models\Utilisateur')->withPivot('pub_utilisateur');
+    }
 }

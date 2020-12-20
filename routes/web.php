@@ -145,6 +145,10 @@ Route::group(['middleware' => 'user'], function() {
 
  Route::get('/offre-instagram/{id}',[UtilisateurController::class, 'offreInstagram']);
 
+ Route::get('/verif-pub/{id}',[UtilisateurController::class, 'verifPub']);
+
+ Route::post('/send-pub/{id}',[UtilisateurController::class,'sendPub']);
+
 });
 
 Route::get('/forget-password-user',[UtilisateurController::class, 'forgetUser']);

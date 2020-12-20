@@ -15,4 +15,9 @@ class Utilisateur extends Model
     {
     	return $this->belongsToMany('App\Models\OffreEmploi')->withPivot('status');
     }
+
+    public function produits()
+    {
+    	return $this->belongsToMany('App\Models\ProductInstagram')->withPivot('pub_utilisateur');
+    }
 }

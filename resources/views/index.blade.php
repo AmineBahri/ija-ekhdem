@@ -125,15 +125,6 @@
 						</div>
 					</div>
 
-					<!-- Search Field -->
-					<div class="intro-search-field">
-						<select class="selectpicker default" name="category_id" title="Tous les Categories">
-						 @foreach($categories as $item)
-							<option value="{{$item->id}}">{{$item->name}}</option>
-						 @endforeach
-						</select>
-					</div>
-
 					<!-- Button -->
 					<div class="intro-search-button">
 						<button type="submit" class="button ripple-effect">Rechercher</button>

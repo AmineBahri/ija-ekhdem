@@ -28,7 +28,8 @@
   </div>
  
   <div class="card-body">
-    <a href="{{$detail->lien}}" target="_blank" class="card-link">Compte client</a>  
+    <a href="{{$detail->lien}}" target="_blank" class="card-link">Compte client</a>
+    <a href="{{url('verif-pub',$detail->id)}}" class="button ripple-effect">faire le pub</a>  
 </div>
   </div>
 </div>

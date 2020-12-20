@@ -45,15 +45,6 @@
 						<li>
 							<input type="text" placeholder="emplacement" name="emplacement">
 						</li>
-						<!-- Search Field -->
-					    <li>
-						    <select class="intro-search-field" name="category_id" title="Tous les Categories">
-						      <option value="">Tous les Categories</option>
-						    @foreach($categories as $item)
-							  <option value="{{$item->id}}">{{$item->name}}</option>
-						    @endforeach
-						    </select>
-				        </li>
 				        <li>
 						  <button type="submit" class="button ripple-effect">Rechercher</button>
 				        </li>
