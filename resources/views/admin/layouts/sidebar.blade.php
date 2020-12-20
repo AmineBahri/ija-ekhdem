@@ -6,7 +6,11 @@
                    <!-- sidebar menu -->
                    <ul class="sidebar-menu">
                       <li class="active">
+<<<<<<< HEAD
                          <a href="{{url('/dashboard-admin')}}"><i class="fa fa-tachometer"></i><span>Dashboard</span>
+=======
+                         <a href="{{url('/admin/dashboard')}}"><i class="fa fa-tachometer"></i><span>Dashboard</span>
+>>>>>>> 73b81b4f36253ed21d6ba41ca065b4bec406bce8
                          <span class="pull-right-container">
                          </span>
                          </a>

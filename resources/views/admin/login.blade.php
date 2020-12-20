@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 <!DOCTYPE html>    
+=======
+
+<!DOCTYPE html>
+<html lang="en">
+    
+>>>>>>> 73b81b4f36253ed21d6ba41ca065b4bec406bce8
 <!-- Mirrored from thememinister.com/crm/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 02 Jun 2019 11:09:03 GMT -->
 <head>
         <meta charset="utf-8">
@@ -24,6 +31,7 @@
         <!-- Content Wrapper -->
         <div class="login-wrapper">
             <div class="container-center">
+<<<<<<< HEAD
                     @if ($errors->any())
                           <div class="alert alert-danger">
                              <ul>
@@ -37,6 +45,24 @@
                       <div class="alert alert-danger" role="alert">
                       {{ Session::get('status') }}
                      </div>
+=======
+                    @if(Session::has('flash_message_error'))
+                    <div class="alert alert-sm alert-danger alert-block" role="alert">
+                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                       </button>
+                       <strong>{!! session('flash_message_error') !!}</strong>
+                    </div>
+                    @endif
+                    
+                    @if(Session::has('flash_message_success'))
+                    <div class="alert alert-sm alert-success alert-block" role="alert">
+                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                       </button>
+                       <strong>{!! session('flash_message_success') !!}</strong>
+                    </div>
+>>>>>>> 73b81b4f36253ed21d6ba41ca065b4bec406bce8
                     @endif
             <div class="login-area">
                 <div class="panel panel-bd panel-custom">
@@ -56,12 +82,20 @@
                 @csrf
                             <div class="form-group">
                                 <label class="control-label" for="username">Username</label>
+<<<<<<< HEAD
                                 <input type="text" placeholder="example@gmail.com" title="Please enter you username" name="email" id="email" class="form-control">
+=======
+                                <input type="text" placeholder="example@gmail.com" title="Please enter you username" required="" value="" name="email" id="email" class="form-control">
+>>>>>>> 73b81b4f36253ed21d6ba41ca065b4bec406bce8
                                 <span class="help-block small">Your unique username to app</span>
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="password">Password</label>
+<<<<<<< HEAD
                                 <input type="password" title="Please enter your password" placeholder="******" name="password" id="password" class="form-control">
+=======
+                                <input type="password" title="Please enter your password" placeholder="******" required="" value="" name="password" id="password" class="form-control">
+>>>>>>> 73b81b4f36253ed21d6ba41ca065b4bec406bce8
                                 <span class="help-block small">Your strong password</span>
                             </div>
                             <div>
