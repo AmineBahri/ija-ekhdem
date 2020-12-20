@@ -271,6 +271,16 @@
                        </li>
                        <li><a href="#"><i class="fa fa-inbox"></i> Inbox</a></li>
                        <li><a href="{{url('logout-admin')}}">
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+                       <li><a href="{{url('logout-admin')}}">
+=======
+                       <li><a href="{{url('logout')}}">
+>>>>>>> 73b81b4f36253ed21d6ba41ca065b4bec406bce8
+>>>>>>> 471382fde774decadb025edfe7b312613c9b813c
+>>>>>>> 35c478e8a255f8b2ecbe240be0e62313c36d559a
                           <i class="fa fa-sign-out"></i> Signout</a>
                        </li>
                     </ul>
