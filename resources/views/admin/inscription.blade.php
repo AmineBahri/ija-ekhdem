@@ -1,7 +1,11 @@
+<<<<<<< HEAD
+<!DOCTYPE html>    
+=======
 
 <!DOCTYPE html>
 <html lang="en">
     
+>>>>>>> 73b81b4f36253ed21d6ba41ca065b4bec406bce8
 <!-- Mirrored from thememinister.com/crm/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 02 Jun 2019 11:10:02 GMT -->
 <head>
         <meta charset="utf-8">
@@ -25,9 +29,12 @@
     <body>
         <!-- Content Wrapper -->
         <div class="login-wrapper">
+<<<<<<< HEAD
+=======
             <div class="back-link">
                 <a href="index.html" class="btn btn-add">Back to Dashboard</a>
             </div>
+>>>>>>> 73b81b4f36253ed21d6ba41ca065b4bec406bce8
             <div class="container-center lg">
              <div class="login-area">
                 <div class="panel panel-bd panel-custom">
@@ -42,6 +49,18 @@
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
+                    @if ($errors->any())
+                          <div class="alert alert-danger">
+                             <ul>
+                               @foreach ($errors->all() as $error)
+                                 <li>{{ $error }}</li>
+                               @endforeach
+                             </ul>
+                          </div>
+                        @endif
+=======
+>>>>>>> 73b81b4f36253ed21d6ba41ca065b4bec406bce8
                     <div class="panel-body">
 <form action="{{url('signup')}}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -49,20 +68,39 @@
           <div class="row">
                                 <div class="form-group col-lg-6">
                                     <label>Username</label>
+<<<<<<< HEAD
+                     <input type="text" name="name" id="name" class="form-control" >
+=======
                      <input type="text" name="name" value="" id="name" class="form-control" >
+>>>>>>> 73b81b4f36253ed21d6ba41ca065b4bec406bce8
                                     <span class="help-block small">Your unique username to app</span>
                                 </div>
                                     <div class="form-group col-lg-6">
                                     <label>Email Address</label>
+<<<<<<< HEAD
+                          <input type="text"  name="email" id="email" class="form-control" >
+=======
                           <input type="text"  name="email"value="" id="email" class="form-control" >
+>>>>>>> 73b81b4f36253ed21d6ba41ca065b4bec406bce8
                                     <span class="help-block small">Your address email to contact</span>
                                 </div>
                             
                                 <div class="form-group col-lg-6">
                                     <label>Password</label>
+<<<<<<< HEAD
+                 <input type="password"  name="password" id="password" class="form-control" >
+                                    <span class="help-block small">Your hard to guess password</span>
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>Confirm Password</label>
+                 <input type="password"  name="conf_password" id="password" class="form-control" >
+                                    <span class="help-block small">Your hard to guess confirm password</span>
+                                </div>
+=======
                  <input type="password"  name="password" value="" id="password" class="form-control" >
                                     <span class="help-block small">Your hard to guess password</span>
                                 </div>
+>>>>>>> 73b81b4f36253ed21d6ba41ca065b4bec406bce8
                                 </div>
                             
                             <div>

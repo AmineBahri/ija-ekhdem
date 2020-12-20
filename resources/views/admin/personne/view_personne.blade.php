@@ -1,6 +1,9 @@
 @extends('admin.layouts.master')
 @section('title','View Personne')
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73b81b4f36253ed21d6ba41ca065b4bec406bce8
 @section('content')
 
 <!-- Content Wrapper. Contains page content -->
@@ -101,6 +104,8 @@
                  </tr>
            @endforeach
          </tbody>
+<<<<<<< HEAD
+=======
            
               
                 
@@ -112,6 +117,7 @@
 
        
            
+>>>>>>> 73b81b4f36253ed21d6ba41ca065b4bec406bce8
                 </tfoot>
               </table>
                    </div>
