@@ -123,25 +123,16 @@ class UtilisateurController extends Controller
 
     public function userSearch(Request $request)
     {
-      $category_id = $request->input('category_id') ; 
       $offerWord = $request->input('offer_title') ; 
       $emplacement = $request->input('emplacement') ;
-      if(($category_id == null || $category_id == '') && ($offerWord == null || $offerWord == '') && ($emplacement == null || $emplacement == '')) {
+      if(($offerWord == null || $offerWord == '') && ($emplacement == null || $emplacement == '')) {
             $offers = OffreEmploi::all() ; 
-        } elseif(($category_id == null || $category_id == '') && ($emplacement == null || $emplacement == '') && $offerWord != null && $offerWord != '') {
+        } elseif(($emplacement == null || $emplacement == '') && $offerWord != null && $offerWord != '') {
             $offers = OffreEmploi::where('titre_offre','like','%'.$offerWord.'%')->get() ;    
-        } elseif(($offerWord == null || $offerWord == '') && ($emplacement == null || $emplacement == '') && $category_id != '' && $category_id != null) {
-            $offers = OffreEmploi::where('categories_id','=',$category_id)->get() ; 
-        } elseif(($offerWord == null || $offerWord == '') && ($category_id == '' && $category_id == null) && $emplacement != '' && $emplacement != null) {
+        } elseif(($offerWord == null || $offerWord == '') && $emplacement != '' && $emplacement != null) {
             $offers = OffreEmploi::where('emplacement','like','%'.$emplacement.'%')->get() ; 
-        } elseif(($category_id == '' && $category_id == null) && ($offerWord != '' && $offerWord != null && $emplacement != '' && $emplacement != null)) {
+        } elseif(($offerWord != '' && $offerWord != null && $emplacement != '' && $emplacement != null)) {
             $offers = OffreEmploi::where([['titre_offre','like','%'.$offerWord.'%'],['emplacement','like','%'.$emplacement.'%']])->get() ; 
-        } elseif(($emplacement == '' && $emplacement == null) && ($offerWord != '' && $offerWord != null && $category_id != '' && $category_id != null)) {
-            $offers = OffreEmploi::where([['titre_offre','like','%'.$offerWord.'%'],['categories_id','=',$category_id]])->get() ; 
-        } elseif(($offerWord == '' && $offerWord == null) && ($emplacement != '' && $emplacement != null && $category_id != '' && $category_id != null)) {
-            $offers = OffreEmploi::where([['emplacement','like','%'.$emplacement.'%'],['categories_id','=',$category_id]])->get() ; 
-        } elseif($category_id != '' && $category_id != null && $offerWord != '' && $offerWord != null && $emplacement != '' && $emplacement != null) {
-            $offers = OffreEmploi::where([['categories_id','=',$category_id],['titre_offre','like','%'.$offerWord.'%'],['emplacement','like','%'.$emplacement.'%']])->get() ; 
         }
         //return $offers ; 
         $categories = Category::all();
@@ -280,14 +271,40 @@ class UtilisateurController extends Controller
       }
       else
       {
-         return redirect()->back();
+        return redirect()->back();
       }
     }
 
     public function offreInstagram($id)
     {
-        $produits = ProductInstagram::where('categories_id',$id)->get();
-        return view('produits-instagram',['produits' => $produits]);
+      $produits = ProductInstagram::where('categories_id',$id)->get();
+      return view('produits-instagram',['produits' => $produits]);
+    }
+
+    public function verifPub($id)
+    {
+      $produit = ProductInstagram::find($id);
+      return view('verif-pub',['produit' => $produit]);
+    }
+
+    public function sendPub(Request $request,$id)
+    {
+      $request->validate(
+            [
+              'file' => 'required|mimes:png,jpeg,jpg,gif'
+            ]);
+      $file = $request->file('file');
+      $uploadPath = "instagram/publicite";
+      $originalFile = $file->getClientOriginalName();
+      $file->move($uploadPath, $originalFile);
+      $utilisateur = Session::get('utilisateur')['id'];
+      $result = DB::table('produit_instagram_utilisateur')->insert([
+            'date_publication' => date('Y-m-d'),
+            'pub_utilisateur' => $originalFile,
+            'produit_instagram_id' => $id,
+            'utilisateur_id' => $utilisateur
+        ]);
+      return redirect('/');
     }
 
     public function logoutUser()

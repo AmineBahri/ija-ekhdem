@@ -145,6 +145,10 @@ Route::group(['middleware' => 'user'], function() {
 
  Route::get('/offre-instagram/{id}',[UtilisateurController::class, 'offreInstagram']);
 
+ Route::get('/verif-pub/{id}',[UtilisateurController::class, 'verifPub']);
+
+ Route::post('/send-pub/{id}',[UtilisateurController::class,'sendPub']);
+
 });
 
 Route::get('/forget-password-user',[UtilisateurController::class, 'forgetUser']);
@@ -165,10 +169,54 @@ Route::get('/deleteuser/{id}',[UtilisateurController::class,'deleteUser']);
 
 Route::get('/logout-user',[UtilisateurController::class, 'logoutUser']);*/
 
-Route::get('/login-admin',[AdminController::class, 'loginAdmin']);
+/*Route::get('/login-admin',[AdminController::class, 'loginAdmin']);
 
 Route::post('/sign-in-admin',[AdminController::class, 'signInAdmin']);
 
 Route::get('/dashboard-admin',[AdminController::class, 'dashboardAdmin']);
 
-Route::get('/logout-admin',[AdminController::class, 'logoutAdmin']);
+Route::get('/logout-admin',[AdminController::class, 'logoutAdmin']);*/
+
+Route::get('/login-admin',[AdminController::class, 'login']);
+
+Route::post('/login',[AdminController::class, 'sign']);
+
+Route::get('/register-admin',[AdminController::class, 'registerAdmin']);
+
+Route::post('/signup',[AdminController::class, 'signAdmin']); 
+
+ Route::group(['middleware' => 'admin'], function() 
+ { 
+
+    Route::get('/dashboard-admin',[AdminController::class, 'dashboard']);
+    
+    Route::get('/add-utilisateur',[AdminController::class, 'addUtilisateur']);
+    
+    Route::get('/view-utilisateur',[AdminController::class, 'viewUtilisateur']);
+    
+    Route::post('/add-utilisateurs',[AdminController::class, 'storeUtilisateur']);
+    
+    Route::get('/add-personne',[AdminController::class, 'addPersonne']);
+    
+    Route::post('/add-personnes',[AdminController::class, 'storePersonne']);
+    
+    Route::get('/view-personne',[AdminController::class, 'viewPersonne']);
+    
+    Route::get('/edit-utilisateur/{id}',[AdminController::class, 'editUtilisateur']);
+    
+    Route::post('/edit-utilisateur/{id}',[AdminController::class, 'updateUtilisateur']);
+    
+    Route::get('/delete-utilisateur/{id}',[AdminController::class, 'deleteUtilisateur']);
+    
+    Route::get('/edit-personne/{id}',[AdminController::class, 'editPersonne']);
+    
+    Route::post('/edit-personne/{id}',[AdminController::class, 'updatePersonne']);
+    
+    Route::get('/delete-personne/{id}',[AdminController::class, 'deletePersonne']);
+
+    //Route::get('/produit',[AdminController::class, 'produit']);
+    
+    //Route::get('/ajouter',[AdminController::class, 'adminajouter']);
+    
+    Route::get('/logout-admin',[AdminController::class, 'logoutAdmin']);
+  });
