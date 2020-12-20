@@ -34,13 +34,8 @@ class AdminController extends Controller
             [
               'name' => 'required|max:255',
               'email' => 'required|email',
-<<<<<<< HEAD
               'password' => 'required|min:8|alpha_num',
               'conf_password' => 'required|min:8|alpha_num|same:password'
-=======
-              'password' => 'required|min:8',
-              
->>>>>>> 73b81b4f36253ed21d6ba41ca065b4bec406bce8
             ]);
         $admin = new Admin();
         $admin->name = $request->name;
@@ -48,11 +43,7 @@ class AdminController extends Controller
         $admin->password = Hash::make($request->password); 
         $admin->save();
 
-<<<<<<< HEAD
       return redirect('/login-admin')->with('success', 'admin crée avec succès!');   
-=======
-      return redirect('/admin')->with('success', 'admin avec succès!');   
->>>>>>> 73b81b4f36253ed21d6ba41ca065b4bec406bce8
     }
 
     public function sign(Request $request)
