@@ -44,8 +44,8 @@
                          </span>
                          </a>
                          <ul class="treeview-menu">
-                            <li><a href="{{url('add-product')}}">Add produit</a></li>
-                       
+                           <li><a href="{{url('add-product')}}">Add produit</a></li>
+                           <li><a href="{{url('list-product')}}">Liste des produits</a></li>
                          </ul>
                       </li>
                      

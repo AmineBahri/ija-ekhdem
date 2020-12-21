@@ -327,7 +327,7 @@ $('#snackbar-user-status label').click(function() {
     return false;
   } 
 }  
- </script>
+</script>
 
 <!-- Google API & Maps -->
 <!-- Geting an API Key: https://developers.google.com/maps/documentation/javascript/get-api-key -->

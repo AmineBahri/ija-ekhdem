@@ -246,12 +246,12 @@ class AdminController extends Controller
       return view('admin.ajouter');
     }
     
-    /*public function add_produit(Request $request)
+    public function storeProduct(Request $request)
     {
       $request->validate(
             [
               'description' => 'required|max:255',
-              'file' => 'required|mimes:pdf,docx,png,jpeg,jpg,png',
+              'file' => 'required|mimes:gif,jpeg,jpg,png',
               'lien' => 'required|max:255'
             ]);
      
@@ -259,19 +259,26 @@ class AdminController extends Controller
         $uploadPath = "instagram";
         $originalImage = $file->getClientOriginalName();
         $file->move($uploadPath, $originalImage);
-        $personne = new ProductInstagram();
-        $personne->description = $request->description;
-        $personne->file = $originalImage;
-        $personne->lien = $request->lien;
-        $personne->save();
+        $produit = new ProductInstagram();
+        $produit->description = $request->description;
+        $produit->file = $originalImage;
+        $produit->lien = $request->lien;
+        $produit->categories_id = "11";
+        $produit->save();
      
-      return redirect('/ajouter')->with('success', 'produit ajouté avec succès!');
+      return redirect('/list-product')->with('success', 'produit ajouté avec succès!');
         //var_dump($item);
      }
     
-    public function produit()
+    public function listProduct()
     {
       $produits = DB::table('produits_instagram')->get();
-      return view ('produit',['produits' => $produits]);
-    }*/
+      return view ('admin.instagram.list-produit',['produits' => $produits]);
+    }
+
+    public function deleteProduct($id)
+    {
+      $produit = DB::table('produits_instagram')->where('id', $id)->delete();
+      return redirect()->back();
+    }
 }

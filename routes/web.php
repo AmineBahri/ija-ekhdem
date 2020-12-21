@@ -214,9 +214,13 @@ Route::post('/signup',[AdminController::class, 'signAdmin']);
     
     Route::get('/delete-personne/{id}',[AdminController::class, 'deletePersonne']);
 
-    //Route::get('/produit',[AdminController::class, 'produit']);
+    Route::get('/list-product',[AdminController::class, 'listProduct']);
     
     Route::get('/add-product',[AdminController::class, 'addProduct']);
+
+    Route::post('/store-product',[AdminController::class, 'storeProduct']);
+
+    Route::get('/delete-product/{id}',[AdminController::class, 'deleteProduct']);
     
     Route::get('/logout-admin',[AdminController::class, 'logoutAdmin']);
   });

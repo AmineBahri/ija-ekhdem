@@ -32,7 +32,7 @@
                                @endforeach
                              </ul>
                           </div>
-                        @endif
+                    @endif
                     @if(Session::get('status'))
                       <div class="alert alert-danger" role="alert">
                       {{ Session::get('status') }}
