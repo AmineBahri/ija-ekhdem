@@ -216,7 +216,7 @@ Route::post('/signup',[AdminController::class, 'signAdmin']);
 
     //Route::get('/produit',[AdminController::class, 'produit']);
     
-    //Route::get('/ajouter',[AdminController::class, 'adminajouter']);
+    Route::get('/add-product',[AdminController::class, 'addProduct']);
     
     Route::get('/logout-admin',[AdminController::class, 'logoutAdmin']);
   });

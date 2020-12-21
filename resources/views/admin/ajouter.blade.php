@@ -10,27 +10,10 @@
           <i class="fa fa-product-hunt"></i>
        </div>
        <div class="header-title">
-          <h1>Add Personne</h1>
-          <small>Add Personne</small>
+          <h1>Add Produit</h1>
+          <small>Add Produit</small>
        </div>
     </section>
-    @if(Session::has('flash_message_error'))
-   <div class="alert alert-sm alert-danger alert-block" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      <strong>{!! session('flash_message_error') !!}</strong>
-   </div>
-   @endif
-   
-   @if(Session::has('flash_message_success'))
-   <div class="alert alert-sm alert-success alert-block" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      <strong>{!! session('flash_message_success') !!}</strong>
-   </div>
-   @endif
     <!-- Main content -->
     <section class="content">
        <div class="row">
@@ -39,39 +22,26 @@
              <div class="panel panel-bd lobidrag">
                 <div class="panel-heading">
                    <div class="btn-group" id="buttonlist"> 
-                      <a class="btn btn-add " href="{{url('add-utilisateur')}}"> 
-                      <i class="fa fa-eye"></i>  View Admin </a>  
+                      <a class="btn btn-add " href="{{url('list-product')}}"> 
+                      <i class="fa fa-eye"></i>Consulter liste des produits</a>  
                    </div>
                 </div>
                 <div class="panel-body">
-          
-
-        
       <form  class="col-sm-6" action="{{url('/add-produit')}}" method="post" enctype="multipart/form-data">
                 @csrf
-
-                     
-                    <div class="form-group">
+          <div class="form-group">
             <label for="recipient-name" class="col-form-label">Description:</label>
-            <input type="text" name="description" class="form-control" placeholder="Enter le cin"  id="description" >
+            <input type="text" name="description" class="form-control" placeholder="Décrire votre produit"  id="description" >
           </div>    
-              <div class="uploadButton margin-top-30">
-                  <input type="file" name="file"/>
-                  <span class="uploadButton-file-name">Entrer votre CV version PDF*</span>
-                </div>
-      
-            
+          <div class="uploadButton margin-top-30">
+            <input type="file" name="file"/>
+          </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">lien:</label>
             <input type="text" name="lien" class="form-control" placeholder="Enter le prenom"  id="lien" >
           </div>
-          <input type="submit" class="btn btn-success" value="AddPersonne"> 
-            
-
-          
-
-          
-                   </form>
+          <input type="submit" class="btn btn-success" value="Ajouter">   
+        </form>
                 </div>
              </div>
           </div>
@@ -80,5 +50,4 @@
     <!-- /.content -->
  </div>
  <!-- /.content-wrapper -->
-
 @endsection

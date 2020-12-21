@@ -1,9 +1,5 @@
 @extends('admin.layouts.master')
 @section('title','View Personne')
-<<<<<<< HEAD
-=======
-
->>>>>>> 73b81b4f36253ed21d6ba41ca065b4bec406bce8
 @section('content')
 
 <!-- Content Wrapper. Contains page content -->
@@ -18,23 +14,6 @@
           <small>Personne List</small>
        </div>
     </section>
-    @if(Session::has('flash_message_error'))
-    <div class="alert alert-danger alert-block">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-        </button>
-    <strong>{{ session('flash_message_error') }}</strong>
-    </div>
-    @endif
-    @if(Session::has('flash_message_success'))
-    <div class="alert alert-success alert-block">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-        </button>
-    <strong>{{ session('flash_message_success') }}</strong>
-    </div>
-    @endif
-
     <div id="message_success" style="display:none;" class="alert alert-sm alert-success">Status Enabled</div>
     <div id="message_error" style="display:none;" class="alert alert-sm alert-danger">Status Disabled</div>
     <!-- Main content -->
@@ -64,8 +43,6 @@
                           <thead>
                 <tr>
                   <th>ID</th>
-                 
-                  
                   <th>Cin</th>
                   <th>Nom</th>
                   <th>Prenom</th>
@@ -82,43 +59,23 @@
                 <tbody>
                     @foreach($personne as $item)
                 <tr>
-                   <td>{{$item->id}}</td>
-                 
+                  <td>{{$item->id}}</td>
                   <td>{{$item->cin}}</td>
                   <td>{{$item->nom}}</td>
-                  <td>{{$item->nom_societe}}</td>
                   <td>{{$item->prenom}}</td>
-                  
+                  <td>{{$item->nom_societe}}</td>
                   <td>{{$item->email}}</td>
-                  
                   <td>{{$item->adresse}}</td>
                   <td>{{$item->telephone}}</td>
                   <td>{{$item->date_naissance}}</td>
                   <td>{{$item->domaine}}</td>
-
-                    <td>
-                 
- <a href="/edit-personne/{{$item->id}}"class ="btn btn-success">Edit</a>
-<a href="/delete-personne/{{$item->id}}" class ="btn btn-danger ">Delete</a>
-           </td>
+                  <td><a href="/edit-personne/{{$item->id}}"class ="btn btn-success">Edit</a>
+                      <a href="/delete-personne/{{$item->id}}" class ="btn btn-danger ">Delete</a>
+                  </td>
                  </tr>
            @endforeach
          </tbody>
-<<<<<<< HEAD
-=======
-           
-              
-                
-                  
-                  
-         
-
-
-
-       
-           
->>>>>>> 73b81b4f36253ed21d6ba41ca065b4bec406bce8
-                </tfoot>
+      </tfoot>
               </table>
                    </div>
                 </div>

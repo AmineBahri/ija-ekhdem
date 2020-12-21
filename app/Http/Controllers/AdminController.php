@@ -241,12 +241,12 @@ class AdminController extends Controller
       return redirect('/view-personne');
     } 
     
-    /*public function adminajouter()
+    public function addProduct()
     {
       return view('admin.ajouter');
     }
     
-    public function add_produit(Request $request)
+    /*public function add_produit(Request $request)
     {
       $request->validate(
             [
