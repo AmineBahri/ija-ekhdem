@@ -243,7 +243,7 @@ class AdminController extends Controller
     
     public function addProduct()
     {
-      return view('admin.ajouter');
+      return view('admin.instagram.ajouter');
     }
     
     public function storeProduct(Request $request)
